@@ -4,7 +4,7 @@ This adapation is an extension of the starter logging code.
 
 Rather than log to a file (as done in the lab), we integrate Graphana
 to have more advanced insignts into the logs and createa a dashboard
-reporting app status!
+reporting app status! This setup is also compelling since the log data is stored in s3 analogue using minio, which is more robust than filesystem storage if swapped out for a s3 bucket.
 
 This is a big change from the lab code which just used basic python logging!
 
@@ -15,6 +15,26 @@ The screenshots of the dashboard are shown below:
 
 ## High Error Count
 ![High error count dashboard](assets/high_error_count.png)
+
+# Project Structure
+
+```
+.
+├── alloy-local-config.yaml          # Alloy config (log collector and forwarder)
+├── docker-compose.yaml              # Docker Compose (Python demo app, Loki, Grafana, Minio, Alloy)
+├── Dockerfile                       # Docker image for the Python application
+├── loki-config.yaml                 # Configuration for Loki (log service)
+├── main.py                          # Python app which randomly generates fake logs
+├── README.md                         
+├── assets/                          # Directory containing dashboard screenshots for readme
+│   ├── low_error_count.png
+│   └── high_error_count.png
+└── graphana_dashboards/             # Grafana dashboard as code
+    ├── dashboards/
+    │   └── python-app-metrics.json  # Logging dashboard as code
+    └── provisioning/
+        └── provider.yaml            # Provider for dashboard code to be loaded
+```
 
 # Steps to run yourself
 
