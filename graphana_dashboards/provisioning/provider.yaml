@@ -1,4 +1,3 @@
-# ie7343-mlops-lab2
 apiVersion: 1
 providers:
   - name: 'Python Logging Demo Apps'
